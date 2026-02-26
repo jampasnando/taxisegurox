@@ -1,0 +1,36 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: 1001
+        GID: 100
+    user: "1001:100"
+    container_name: taxisegurodev-php
+    working_dir: /var/www
+    volumes:
+      - ./src:/var/www
+    env_file:
+      - .env.dev
+    expose:
+      - "9000"
+    networks:
+      - taxisegurodev-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: taxisegurodev_nginx
+    ports:
+      - "8091:80"
+    volumes:
+      - ./src:/var/www
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - taxisegurodev-network
+
+networks:
+  taxisegurodev-network:
+    driver: bridge
