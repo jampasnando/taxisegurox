@@ -85,12 +85,12 @@ class PropietarioVehiculosRelationManager extends RelationManager
             ])
             ->recordActions([
                 EditAction::make(),
-                DissociateAction::make(),
+                // DissociateAction::make(),
                 DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DissociateBulkAction::make(),
+                    // DissociateBulkAction::make(),
                     DeleteBulkAction::make(),
                 ]),
             ]);
