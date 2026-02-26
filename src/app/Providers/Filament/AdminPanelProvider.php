@@ -56,7 +56,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->sidebarWidth('11rem')
+            ->sidebarWidth('12rem')
             ->maxContentWidth(Width::ScreenTwoExtraLarge);
     }
 }
