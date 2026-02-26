@@ -33,7 +33,10 @@ class Vehiculo extends Model
     {
         return $this->hasMany(PropietarioVehiculo::class);
     }
-
+    public function conductorVehiculos()
+    {
+        return $this->hasMany(ConductorVehiculo::class);
+    }
 
     protected function placa(): Attribute
     {
