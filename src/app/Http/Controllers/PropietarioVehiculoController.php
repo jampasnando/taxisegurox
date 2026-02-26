@@ -47,6 +47,10 @@ class PropietarioVehiculoController extends Controller
             'adjunto_poder'      => 'nullable|string',
             'adjunto_matricula'  => 'nullable|string',
             'estado'             => 'required|string|max:100',
+            'adjunto_fotofrontal' => 'nullable|string',
+            'adjunto_fotoposterior' => 'nullable|string',
+            'adjunto_fotolateralizq' => 'nullable|string',
+            'adjunto_fotolateralder' => 'nullable|string',
         ]);
 
         // 🚨 Validación crítica municipal
@@ -91,6 +95,10 @@ class PropietarioVehiculoController extends Controller
             'adjunto_poder'      => 'nullable|string',
             'adjunto_matricula'  => 'nullable|string',
             'estado'             => 'nullable|string|max:100',
+            'adjunto_fotofrontal' => 'nullable|string',
+            'adjunto_fotoposterior' => 'nullable|string',
+            'adjunto_fotolateralizq' => 'nullable|string',
+            'adjunto_fotolateralder' => 'nullable|string',
         ]);
 
         if (isset($data['estado']) && $data['estado'] === 'ACTIVO') {

@@ -41,7 +41,12 @@ class PropietarioVehiculosRelationManager extends RelationManager
                         'TERCERO' => 'TERCERO',
                     ])
                     ->required(),
-
+                Select::make('estado')
+                    ->options([
+                        1 => 'ACTIVO',
+                        2 => 'INACTIVO',
+                    ])
+                    ->required(),
                 FileUpload::make('adjunto_crpva')
                     ->directory('vehiculos/crpva'),
 
@@ -50,14 +55,16 @@ class PropietarioVehiculosRelationManager extends RelationManager
 
                 FileUpload::make('adjunto_matricula')
                     ->directory('vehiculos/matricula'),
-
-                Select::make('estado')
-                    ->options([
-                        1 => 'ACTIVO',
-                        2 => 'INACTIVO',
-                    ])
-                    ->required(),
-            ]);
+                FileUpload::make('adjunto_fotofrontal')
+                    ->directory('vehiculos/fotofrontal'),
+                FileUpload::make('adjunto_fotoposterior')
+                    ->directory('vehiculos/fotoposterior'),
+                FileUpload::make('adjunto_fotolateralizq')
+                    ->directory('vehiculos/fotolateralizq'),
+                FileUpload::make('adjunto_fotolateralder')
+                    ->directory('vehiculos/fotolateralder'),
+            ])
+            ->columns(3);
     }
 
     public function table(Table $table): Table

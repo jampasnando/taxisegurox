@@ -17,6 +17,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Laravel\Pail\File;
 
 class PropietarioVehiculosRelationManager extends RelationManager
 {
@@ -33,7 +34,12 @@ class PropietarioVehiculosRelationManager extends RelationManager
 
                 TextInput::make('tipo')
                     ->required(),
-
+                Select::make('estado')
+                    ->options([
+                        1 => 'ACTIVO',
+                        2 => 'INACTIVO',
+                    ])
+                    ->required(),
                 FileUpload::make('adjunto_crpva')
                     ->directory('vehiculos/crpva'),
 
@@ -42,14 +48,17 @@ class PropietarioVehiculosRelationManager extends RelationManager
 
                 FileUpload::make('adjunto_matricula')
                     ->directory('vehiculos/matricula'),
+                FileUpload::make('adjunto_fotofrontal')
+                    ->directory('vehiculos/fotofrontal'),
+                FileUpload::make('adjunto_fotoposterior')
+                    ->directory('vehiculos/fotoposterior'),
+                FileUpload::make('adjunto_fotolateralizq')
+                    ->directory('vehiculos/fotolateralizq'),
+                FileUpload::make('adjunto_fotolateralder')
+                    ->directory('vehiculos/fotolateralder'),
 
-                Select::make('estado')
-                    ->options([
-                        1 => 'ACTIVO',
-                        2 => 'INACTIVO',
-                    ])
-                    ->required(),
-            ]);
+            ])
+            ->columns(3);
     }
 
     public function table(Table $table): Table
@@ -80,8 +89,8 @@ class PropietarioVehiculosRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                CreateAction::make(),
-                AssociateAction::make(),
+                // CreateAction::make(),
+                // AssociateAction::make(),
             ])
             ->recordActions([
                 EditAction::make(),
