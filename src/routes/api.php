@@ -1,7 +1,7 @@
 <?php
-use App\Http\Controllers\Api\ConductorController;
-use App\Http\Controllers\Api\ConductorVehiculoController;
-use App\Http\Controllers\Api\PropietarioVehiculoController;
+use App\Http\Controllers\ConductorController;
+use App\Http\Controllers\ConductorVehiculoController;
+use App\Http\Controllers\PropietarioVehiculoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PropietarioController;
 use App\Http\Controllers\VehiculoController;
