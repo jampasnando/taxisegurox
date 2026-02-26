@@ -17,6 +17,7 @@ class PropietariosTable
         return $table
             ->columns([
                 TextColumn::make('nrodocumento')
+                    ->label('CI')
                     ->searchable(),
                 TextColumn::make('expedido')
                     ->searchable(),
@@ -31,13 +32,15 @@ class PropietariosTable
                 TextColumn::make('celular')
                     ->searchable(),
                 TextColumn::make('zona')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('barrio')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 ImageColumn::make('adjunto_documento')
                     ->label('Documento')
                     ->url(fn ($record) => $record->adjunto_documento)
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->openUrlInNewTab(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
