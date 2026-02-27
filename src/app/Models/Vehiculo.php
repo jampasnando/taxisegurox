@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\OperadorVehiculo;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,7 +38,10 @@ class Vehiculo extends Model
     {
         return $this->hasMany(ConductorVehiculo::class);
     }
-
+    public function operadorVehiculos()
+    {
+        return $this->hasMany(OperadorVehiculo::class);
+    }
     protected function placa(): Attribute
     {
         return Attribute::make(

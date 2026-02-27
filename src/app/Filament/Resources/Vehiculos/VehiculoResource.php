@@ -7,10 +7,12 @@ use App\Filament\Resources\Vehiculos\Pages\EditVehiculo;
 use App\Filament\Resources\Vehiculos\Pages\ListVehiculos;
 use App\Filament\Resources\Vehiculos\Pages\ViewVehiculo;
 use App\Filament\Resources\Vehiculos\RelationManagers\ConductorVehiculosRelationManager;
+use App\Filament\Resources\Vehiculos\RelationManagers\OperadorVehiculosRelationManager;
 use App\Filament\Resources\Vehiculos\RelationManagers\PropietarioVehiculosRelationManager;
 use App\Filament\Resources\Vehiculos\Schemas\VehiculoForm;
 use App\Filament\Resources\Vehiculos\Schemas\VehiculoInfolist;
 use App\Filament\Resources\Vehiculos\Tables\VehiculosTable;
+use App\Models\Operador;
 use App\Models\Vehiculo;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -46,6 +48,7 @@ class VehiculoResource extends Resource
         return [
             PropietarioVehiculosRelationManager::class,
             ConductorVehiculosRelationManager::class,
+            OperadorVehiculosRelationManager::class,
         ];
     }
 
