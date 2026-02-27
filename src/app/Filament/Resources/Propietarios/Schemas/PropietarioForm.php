@@ -13,7 +13,7 @@ class PropietarioForm
     {
         return $schema
             ->components([
-                Section::make('Información Personal')
+                Section::make('Información Personal del Propietario: '. $schema->getRecord()?->nombres.' '. $schema->getRecord()?->primer_apellido ?? '')
                     ->schema([
                         TextInput::make('nrodocumento')
                             ->required()
@@ -39,6 +39,8 @@ class PropietarioForm
 
                         TextInput::make('barrio'),
                     ])
+                    ->collapsible()
+                    ->collapsed(fn ($record): bool => $record !== null)
                     ->columns(3)
                     ->columnSpanFull(),
             ]);

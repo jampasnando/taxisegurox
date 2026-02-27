@@ -20,6 +20,8 @@ use Filament\Tables\Table;
 class ConductorVehiculosRelationManager extends RelationManager
 {
     protected static string $relationship = 'conductorVehiculos';
+    protected static ?string $title = 'Conductores';
+
 
     public function form(Schema $schema): Schema
     {

@@ -22,6 +22,7 @@ use Laravel\Pail\File;
 class PropietarioVehiculosRelationManager extends RelationManager
 {
     protected static string $relationship = 'propietarioVehiculos';
+    protected static ?string $title = 'Propietarios';
 
     public function form(Schema $schema): Schema
     {
@@ -67,7 +68,9 @@ class PropietarioVehiculosRelationManager extends RelationManager
             ->recordTitleAttribute('propietario')
             ->columns([
                 TextColumn::make('propietario.nombres')
-                    ->label('Propietario'),
+                    ->label('Propietario')
+                    ->getStateUsing(fn ($record): ?string => ($record->propietario?->nombres ?? '') . ' ' . ($record->propietario?->primer_apellido ?? ''))
+                    ->searchable(),
 
                 TextColumn::make('tipo'),
 

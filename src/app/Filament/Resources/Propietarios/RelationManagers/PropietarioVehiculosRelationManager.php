@@ -24,6 +24,7 @@ use Filament\Tables\Table;
 class PropietarioVehiculosRelationManager extends RelationManager
 {
     protected static string $relationship = 'propietarioVehiculos';
+    protected static ?string $title = 'Vehículos';
 
     public function form(Schema $schema): Schema
     {
@@ -71,18 +72,25 @@ class PropietarioVehiculosRelationManager extends RelationManager
     {
         return $table
             ->recordTitleAttribute('vehiculo')
+            // ->recordClasses(fn ($record) => [
+            //     'bg-gray-100 text-gray-300' => ($record->estado == 0 || $record->estado === false),
+            // ])
+            // ->extraAttributes(fn ($record) => ($record?->estado == 0 || $record?->estado === false) ? ['style' => 'background-color: #f3f4f6; color: red !important;'] : [])
             ->columns([
                 TextColumn::make('vehiculo.placa')
                     ->label('Placa')
+                    ->extraAttributes(fn ($record) => ($record?->estado == 0 || $record?->estado === false) ? ['style' => 'color: red !important;'] : [])
                     ->searchable(),
 
-                TextColumn::make('tipo'),
+                TextColumn::make('tipo')
+                ->extraAttributes(fn ($record) => ($record?->estado == 0 || $record?->estado === false) ? ['style' => 'color: red !important;'] : []),
 
                 ToggleColumn::make('estado'),
                 TextColumn::make('created_at')
                     ->date()
                     ->label('Fecha Registro'),
             ])
+            ->defaultSort('estado', 'desc')
             ->filters([
                 //
             ])

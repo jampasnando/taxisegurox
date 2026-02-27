@@ -13,7 +13,7 @@ class VehiculoForm
     {
         return $schema
             ->components([
-                Section::make('Información General')
+                Section::make('Información Vehicular de la Placa: '. $schema->getRecord()?->placa ?? '')
                     ->schema([
                         TextInput::make('placa')
                             ->required()
@@ -53,10 +53,12 @@ class VehiculoForm
                             ])
                             ->required(),
                     ])
+                    ->collapsible()
+                    ->collapsed(fn ($record): bool => $record !== null)
                     ->columns(3)
                     ->columnSpanFull(),
 
-                
+
             ]);
     }
 }
